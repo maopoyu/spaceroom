@@ -1,0 +1,15 @@
+<h1>Assign a guest</h1>
+
+<%= form_for @booking do |f| %>
+	<p>
+		<%= f.label :name %><br/>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :room_num %><br/>
+		<%= f.text_area :room_num %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
