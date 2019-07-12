@@ -4,10 +4,17 @@ class BookingsController < ApplicationController
 	end
 
 	def create
-		#render plain: params[:booking].inspect
 		@booking = Booking.new(booking_params)
-		@booking.save
-		redirect_to bookings_show(@booking)
+		if @booking.save
+			flash[:notice] = "Assignment was completed."
+			redirect_to booking_path(@booking)
+		else
+			render 'new'
+		end
+	end
+
+	def show
+		@booking = Booking.find(params[:id])
 	end
 
 	private

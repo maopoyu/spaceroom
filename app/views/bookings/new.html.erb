@@ -1,5 +1,14 @@
 <h1>Assign a guest</h1>
 
+<% if @booking.errors.any? %>
+<h2>Some errors have happend.</h2>
+<ul>
+	<% @booking.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+</ul>
+<% end %>
+
 <%= form_for @booking do |f| %>
 	<p>
 		<%= f.label :name %><br/>
