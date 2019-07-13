@@ -1,0 +1,24 @@
+<h1>Listing all bookings</h1>
+<p>
+<%= link_to "Create a new assignment", new_booking_path %>
+</p>
+
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Room#</th>
+	</tr>
+
+	<% @bookings.each do |booking| %>
+	<tr>
+		<td><%= booking.name %></td>
+		<td><%= booking.room_num %></td>
+		<td><%= link_to "Edit", edit_booking_path(booking) %></td>
+		<td><%= link_to "Show", booking_path(booking) %></td>
+	</tr>
+	<% end %>
+</table>
+<p>
+<%= link_to "Home", bookings_path %>
+</p>
