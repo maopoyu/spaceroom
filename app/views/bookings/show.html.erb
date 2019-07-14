@@ -7,5 +7,14 @@
 <p>
 	Room number: <%= @booking.room_num %>
 </p>
+
+<p>
+	Check in: <%= @booking.check_in %>
+</p>
+
+<p>
+	Check out: <%= @booking.check_out %>
+</p>
+
 <%= link_to "Edit", edit_booking_path(@booking) %> |
 <%= link_to "Home", bookings_path %>

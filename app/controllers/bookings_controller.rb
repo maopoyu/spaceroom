@@ -53,6 +53,6 @@ class BookingsController < ApplicationController
 	end
 
 	def booking_params
-		params.require(:booking).permit(:name, :room_num)
+		params.require(:booking).permit(:name, :room_num, :check_in, :check_out)
 	end
 end

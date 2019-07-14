@@ -8,18 +8,51 @@
 	<tr>
 		<th>Name</th>
 		<th>Room#</th>
+		<th>Check in</th>
+		<th>Check out</th>
 	</tr>
 
 	<% @bookings.each do |booking| %>
 	<tr>
 		<td><%= booking.name %></td>
 		<td><%= booking.room_num %></td>
+		<td><%= booking.check_in %></td>
+		<td><%= booking.check_out %></td>
 		<td><%= link_to "Edit", edit_booking_path(booking) %></td>
 		<td><%= link_to "Show", booking_path(booking) %></td>
 		<td><%= link_to "Delete", booking_path(booking), method: :delete, data: {confirm: "Are you sure?"} %></td>
 	</tr>
 	<% end %>
 </table>
+
+<table>
+		<tr>
+			<th>Room#</th>
+			<th>Yesterday 7/14</th>
+			<th>Today 7/15</th>
+			<th>Tomorrow 7/16</th>
+		</tr>
+
+	<tr>
+		<td>201A</td>
+		<td><</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>201B</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>201C</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
 <p>
 <%= link_to "Home", bookings_path %>
 </p>

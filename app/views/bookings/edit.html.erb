@@ -1,3 +1,35 @@
 <h1>Edit existing assignment</h1>
 
-<%= render 'form' %>
+<% if @booking.errors.any? %>
+<h2>Some errors have happend.</h2>
+<ul>
+	<% @booking.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<%= form_for @booking do |f| %>
+	<p>
+		<%= f.label :name %><br/>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :room_num %><br/>
+		<%= f.text_area :room_num %>
+	</p>
+	<p>
+		<%= f.label :check_in %><br/>
+		<%= f.date_field :check_in %>
+	</p>
+	<p>
+		<%= f.label :check_out %><br/>
+		<%= f.date_field :check_out %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to "Home", bookings_path %>
