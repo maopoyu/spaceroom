@@ -38,6 +38,13 @@ class BookingsController < ApplicationController
 		@booking = Booking.find(params[:id])
 	end
 
+	def destroy
+		@booking = Booking.find(params[:id])
+		@booking.destroy
+		flash[:notice] = "Assignment is deleted."
+		redirect_to bookings_path
+	end
+
 	private
 	def booking_params
 		params.require(:booking).permit(:name, :room_num)
