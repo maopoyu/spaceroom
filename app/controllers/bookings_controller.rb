@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+	before_action :set_booking, only: [:edit, :update, :show, :destroy]
+
 	def home
 	end
 
@@ -7,7 +9,7 @@ class BookingsController < ApplicationController
 	end
 
 	def edit
-		@booking = Booking.find(params[:id])
+		
 	end
 
 	def new
@@ -25,7 +27,7 @@ class BookingsController < ApplicationController
 	end
 
 	def update
-		@booking = Booking.find(params[:id])
+		
 		if @booking.update(booking_params)
 			flash[:notice] = "Assignment was edited."
 			redirect_to booking_path(@booking)
@@ -35,17 +37,21 @@ class BookingsController < ApplicationController
 	end
 
 	def show
-		@booking = Booking.find(params[:id])
+		
 	end
 
 	def destroy
-		@booking = Booking.find(params[:id])
+		
 		@booking.destroy
 		flash[:notice] = "Assignment is deleted."
 		redirect_to bookings_path
 	end
 
 	private
+	def set_booking
+		@booking = Booking.find(params[:id])
+	end
+
 	def booking_params
 		params.require(:booking).permit(:name, :room_num)
 	end
