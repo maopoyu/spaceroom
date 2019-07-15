@@ -1,0 +1,6 @@
+<% booking = Booking.find_by_room_num_and_check_in(room, "2019-07-14") %>
+<% if booking == nil %>
+<%= link_to "New", new_booking_path %>
+<% else %>
+<%= booking.name %>
+<% end %>

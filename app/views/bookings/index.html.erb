@@ -27,30 +27,32 @@
 
 <table>
 		<tr>
+			<% yest = Time.now.yesterday.strftime("%Y-%m-%d") %>
+			<% toda = Time.now.strftime("%Y-%m-%d") %>
+			<% tomo = Time.now.tomorrow.strftime("%Y-%m-%d") %>
 			<th>Room#</th>
-			<th>Yesterday 7/14</th>
-			<th>Today 7/15</th>
-			<th>Tomorrow 7/16</th>
+			<th>Yesterday<br/><%= yest %></th>
+			<th>Today<br/><%= toda %></th>
+			<th>Tomorrow<br/><%= tomo %></th>
 		</tr>
 
+<% beds = ['201A', '201B', '201C'] %>
+<% dates = [yest, toda, tomo] %>
+	<% beds.each do |bed| %>
 	<tr>
-		<td>201A</td>
-		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-14").name %></td>
-		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-15").name %></td>
-		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-16").name %></td>
+		<td><%= bed %></td>
+		<% dates.each do |date| %>
+		<td>
+			<% booking = Booking.where("check_in <= ? and check_out > ?", date, date).find_by_room_num(bed) %>
+			<% if booking == nil %>
+			<%= link_to "New", new_booking_path %>
+			<% else %>
+			<%= link_to booking.name, edit_booking_path(booking) %>
+			<% end %>
+		</td>
+		<% end %>
 	</tr>
-	<tr>
-		<td>201B</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>201C</td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
+	<% end %>
 </table>
 
 <p>
