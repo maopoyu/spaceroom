@@ -35,9 +35,9 @@
 
 	<tr>
 		<td>201A</td>
-		<td><</td>
-		<td></td>
-		<td></td>
+		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-14").name %></td>
+		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-15").name %></td>
+		<td><%= Booking.find_by_room_num_and_check_in("201A", "2019-07-16").name %></td>
 	</tr>
 	<tr>
 		<td>201B</td>
